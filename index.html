@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f5f3" />
+  <meta name="description" content="Yussef Zahrani — Data Science student, developer, and builder at the University of Central Florida." />
+  <title>Yussef Zahrani | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #191919;
+      --muted: #626262;
+      --cloud: #f5f5f3;
+      --paper: #ffffff;
+      --line: #1c1c1c;
+      --pixel: 'Press Start 2P', 'Courier New', monospace;
+      --body: 'Pixelify Sans', 'Courier New', monospace;
+      --width: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 94px; }
+    body { margin: 0; background: var(--cloud); color: var(--ink); font-family: var(--body); -webkit-font-smoothing: none; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px dashed #111; outline-offset: 5px; }
+    ::selection { color: white; background: black; }
+    button { font: inherit; }
+    #wave-bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; image-rendering: pixelated; }
+    .noise { position: fixed; inset: 0; pointer-events: none; opacity: .19; z-index: -1; background-image: radial-gradient(#727272 0.45px, transparent 0.8px); background-size: 7px 7px; mask-image: linear-gradient(to bottom, transparent 3%, black 75%); }
+    .wrap { width: min(var(--width), calc(100% - 80px)); margin-inline: auto; }
+
+    /* Top bar */
+    .site-header { position: sticky; top: 0; z-index: 20; background: rgba(250,250,248,.94); border-bottom: 3px solid var(--ink); }
+    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 13px; font-family: var(--pixel); font-size: 12px; line-height: 1.7; white-space: nowrap; }
+    .brand-icon { display: inline-grid; place-items: center; width: 39px; height: 39px; background: var(--ink); color: #fff; font-size: 12px; box-shadow: 4px 4px 0 #b1b1b1; }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-right a { font-size: 14px; font-weight: 700; letter-spacing: .035em; text-transform: uppercase; }
+    .nav-right a:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .top-status { font-size: 13px; color: #454545; border: 2px solid #191919; padding: 6px 10px 5px; white-space: nowrap; background: #fff; }
+    .status-dot { width: 8px; height: 8px; display: inline-block; background: #191919; margin-right: 6px; }
+
+    /* Intro */
+    .hero { min-height: min(760px, 91vh); min-height: min(760px, 91svh); display: flex; flex-direction: column; }
+    .hero-inner { padding-top: clamp(115px, 13vw, 175px); padding-bottom: 90px; position: relative; flex: 1; }
+    .small-line { font-family: var(--pixel); font-size: 10px; letter-spacing: .02em; line-height: 2; }
+    .line-slash { padding: 0 10px; color: #737373; }
+    .hero-title { font-family: var(--pixel); font-weight: 400; font-size: clamp(39px, 5.7vw, 81px); letter-spacing: -.055em; line-height: 1.54; margin: 37px 0 10px; }
+    .hero-title span { display: block; }
+    .hero-title .stroke { color: #565656; }
+    .hero-sub { max-width: 670px; font-size: clamp(22px, 2.5vw, 31px); line-height: 1.32; font-weight: 600; margin: 9px 0 34px; }
+    .hero-action { display: inline-flex; align-items: center; gap: 24px; background: #161616; color: #fff; padding: 15px 20px 14px; border: 3px solid #161616; font-family: var(--pixel); font-size: 10px; box-shadow: 7px 7px 0 #a4a4a4; transition: transform 160ms, box-shadow 160ms; }
+    .hero-action:hover { transform: translate(3px, 3px); box-shadow: 4px 4px 0 #a4a4a4; }
+    .hero-action .arrow { font: 700 20px var(--body); }
+    .hero-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 2px solid var(--ink); padding: 19px 0 18px; font-size: 15px; font-weight: 600; background: rgba(248,248,247,.3); }
+    .hero-footer span:last-child { letter-spacing: 1px; }
+
+    /* Main panels */
+    main { position: relative; }
+    .section { padding: 105px 0 20px; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 15px; margin-bottom: 34px; }
+    .section-heading { margin: 0; font: 400 clamp(25px, 3vw, 38px)/1.6 var(--pixel); letter-spacing: -.035em; }
+    .section-eyebrow { margin: 0 0 11px; font: 400 10px/1.8 var(--pixel); }
+    .section-meta { font: 500 17px var(--body); text-transform: uppercase; white-space: nowrap; }
+    .pixel-card { background: #fff; border: 3px solid var(--line); box-shadow: 10px 10px 0 rgba(23,23,23,.88); }
+    .about-frame { overflow: hidden; }
+    .panel-bar { padding: 13px 20px; border-bottom: 3px solid var(--line); background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px; font: 400 10px/1.8 var(--pixel); }
+    .panel-dots { display: inline-flex; gap: 6px; }
+    .panel-dots i { display: block; height: 9px; width: 9px; background: white; }
+    .about-body { padding: clamp(27px, 4.6vw, 59px) clamp(25px, 5vw, 65px) clamp(32px, 5vw, 60px); }
+    .about-body p { margin: 0; max-width: 940px; font-size: clamp(23px, 2.4vw, 29px); font-weight: 500; line-height: 1.49; letter-spacing: .002em; }
+    .about-body strong { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+    .about-bottom { padding-top: 34px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .label-chip { border: 2px solid var(--line); font-family: var(--pixel); font-size: 9px; line-height: 1.5; padding: 8px 10px; }
+    .about-bottom .filler { flex: 1; }
+    .about-bottom .file-type { font: 700 14px var(--body); color: #666; }
+
+    /* Cards */
+    .projects { padding-top: 114px; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 19px; }
+    .work-card { min-height: 270px; padding: 24px; display: flex; flex-direction: column; background: rgba(255,255,255,.97); border: 3px solid var(--line); box-shadow: 6px 6px 0 rgba(23,23,23,.85); }
+    .work-card-top { display: flex; justify-content: space-between; align-items: center; font: 400 9px/2 var(--pixel); }
+    .pixel-icon { width: 16px; height: 16px; background: #252525; box-shadow: -6px 0 0 #8d8d8d, 0 6px 0 #8d8d8d, -6px 6px 0 #252525; margin-right: 8px; }
+    .work-card h3 { font-size: 27px; font-weight: 700; line-height: 1.08; margin: 50px 0 12px; }
+    .work-card p { font-size: 18px; line-height: 1.32; color: #505050; margin: 0 0 24px; }
+    .work-card .tech { margin-top: auto; border-top: 2px dotted #aaa; padding-top: 11px; font-size: 14px; font-weight: 700; letter-spacing: .01em; }
+
+    .coursework { padding-bottom: 120px; }
+    .course-panel { display: grid; grid-template-columns: 1.5fr auto; align-items: center; gap: 30px; padding: 32px 38px; border: 3px solid #1b1b1b; background: #e5e5e3; }
+    .course-panel h3 { font: 400 18px/1.9 var(--pixel); margin: 0 0 10px; }
+    .course-panel p { font-size: 20px; line-height: 1.35; margin: 0; max-width: 650px; }
+    .course-panel span { font: 400 11px/1.7 var(--pixel); border: 2px solid #111; background: white; padding: 13px 16px; text-align: center; }
+
+    .footer { border-top: 3px solid #191919; background: #191919; color: white; }
+    .footer-inner { min-height: 110px; display: flex; align-items: center; justify-content: space-between; gap: 14px; font: 400 10px/1.8 var(--pixel); }
+    .footer-inner .footer-note { color: #b6b6b6; }
+    @media (max-width: 950px) {
+      .project-grid { grid-template-columns: 1fr 1fr; }
+      .hero-title { font-size: clamp(35px, 6vw, 62px); }
+      .course-panel { grid-template-columns: 1fr; }
+      .course-panel span { justify-self: start; }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: calc(100% - 34px); }
+      .nav { min-height: 72px; }
+      .brand { font-size: 10px; gap: 9px; }
+      .brand-icon { width: 33px; height: 33px; font-size: 10px; }
+      .nav-right { gap: 13px; }
+      .nav-right a { font-size: 12px; }
+      .top-status { display: none; }
+      .hero { min-height: 640px; }
+      .hero-inner { padding-top: 108px; padding-bottom: 70px; }
+      .hero-title { font-size: clamp(25px, 7.2vw, 44px); line-height: 1.77; margin-top: 28px; }
+      .hero-sub { font-size: 24px; max-width: 490px; }
+      .hero-action { font-size: 9px; padding: 13px 14px; gap: 10px; }
+      .hero-footer { font-size: 11px; }
+      .section { padding-top: 78px; }
+      .section-heading { font-size: 24px; }
+      .section-meta { display: none; }
+      .panel-bar { padding: 12px; font-size: 8px; }
+      .about-body { padding: 28px 21px 32px; }
+      .about-body p { font-size: 22px; line-height: 1.42; }
+      .label-chip { font-size: 8px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .work-card { min-height: 215px; }
+      .work-card h3 { margin-top: 35px; }
+      .course-panel { padding: 24px; }
+      .course-panel h3 { font-size: 12px; }
+      .course-panel p { font-size: 19px; }
+      .course-panel span { font-size: 9px; }
+      .coursework { padding-bottom: 85px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 8px; font-size: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-action { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="wave-bg" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Site navigation">
+      <a class="brand" href="#top" aria-label="Return to home"><span class="brand-icon">YZ</span><span>YUSSEF.Z</span></a>
+      <div class="nav-right">
+        <a href="#about">ABOUT</a>
+        <a href="#work">WORK</a>
+        <a href="#coursework">COURSE</a>
+        <span class="top-status"><i class="status-dot"></i>UCF / 2026</span>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner wrap">
+        <div class="small-line">HELLO, WORLD! <span class="line-slash">/</span> PORTFOLIO_V1.0</div>
+        <h1 class="hero-title" id="hero-title"><span>YUSSEF</span><span class="stroke">ZAHRANI<span aria-hidden="true">_</span></span></h1>
+        <p class="hero-sub">Data science student.<br />Software builder.<br />Curious about how things work.</p>
+        <a class="hero-action" href="#about">READ ABOUT ME <span class="arrow" aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-footer wrap"><span>BASED IN ORLANDO, FL</span><span>PYTHON / DATA / SYSTEMS</span></div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-eyebrow">01 // INTRODUCTION</p><h2 class="section-heading" id="about-title">ABOUT ME</h2></div>
+          <span class="section-meta">ONE STORY. NO TIMELINE.</span>
+        </div>
+        <article class="pixel-card about-frame">
+          <div class="panel-bar"><span>&gt; ABOUT_ME.TXT <span aria-hidden="true">_</span></span><span class="panel-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="about-body">
+            <!-- ============================================================
+               EDIT YOUR ABOUT ME HERE:
+               Replace the paragraph below with your own words.
+               Keep the <p> and </p> tags around the paragraph.
+               ============================================================ -->
+            <p>Hi, I'm <strong>Yussef</strong>, a Data Science student at the <strong>University of Central Florida</strong> with an interest in data engineering, software development, and problem-solving. During my internship at <strong>NTT DATA</strong>, I worked with Python, SQL, Power BI, and AI-related projects to support data analysis and automation. My experiences in customer service and robotics also taught me how to communicate clearly, collaborate with others, and adapt to new challenges. I enjoy building practical tools and learning how complex systems work behind the scenes.</p>
+            <!-- END OF EDITABLE ABOUT ME -->
+            <div class="about-bottom"><span class="label-chip">DATA SCIENCE</span><span class="label-chip">UCF</span><span class="label-chip">SOFTWARE</span><span class="filler"></span><span class="file-type">END_OF_FILE ■</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section projects" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-eyebrow">02 // SELECTED PROJECTS</p><h2 class="section-heading" id="work-title">THINGS I'VE BUILT</h2></div>
+          <span class="section-meta">WORK IN PROGRESS</span>
+        </div>
+        <div class="project-grid">
+          <article class="work-card"><div class="work-card-top"><span>01 / DATA</span><span class="pixel-icon" aria-hidden="true"></span></div><h3>Market Data Pipeline</h3><p>Collecting, storing, and organizing pricing data using Python and PostgreSQL.</p><div class="tech">PYTHON · SQL · POSTGRESQL</div></article>
+          <article class="work-card"><div class="work-card-top"><span>02 / SYSTEMS</span><span class="pixel-icon" aria-hidden="true"></span></div><h3>Database Prototype</h3><p>Exploring storage engines, file pages, and low-level programming with Zig.</p><div class="tech">ZIG · DATABASES · SYSTEMS</div></article>
+          <article class="work-card"><div class="work-card-top"><span>03 / AUTOMATION</span><span class="pixel-icon" aria-hidden="true"></span></div><h3>Workflow Automation</h3><p>Creating practical tools for handling forms, data validation, and documents.</p><div class="tech">PYTHON · POWER AUTOMATE</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section coursework" id="coursework" aria-labelledby="course-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-eyebrow">03 // UNIVERSITY WORK</p><h2 class="section-heading" id="course-title">COURSE PORTFOLIO</h2></div>
+          <span class="section-meta">ENC 3241</span>
+        </div>
+        <div class="course-panel"><div><h3>ACADEMIC WRITING ARCHIVE</h3><p>Research proposals, professional documents, and other major assignments from ENC 3241 will appear here as they are completed.</p></div><span>FILES COMING SOON</span></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="footer-inner wrap"><span>© 2026 YUSSEF ZAHRANI</span><span class="footer-note">BUILT WITH HTML, CSS & CURIOSITY</span></div></footer>
+
+  <script>
+    // The grayscale wave background is drawn with the built-in Canvas API.
+    // No libraries or paid assets are needed.
+    (() => {
+      const canvas = document.getElementById('wave-bg');
+      const ctx = canvas.getContext('2d', { alpha: false });
+      if (!ctx) return;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let width = 0, height = 0, frameId = null;
+      const resize = () => {
+        // Draw at reduced resolution for subtle blocky/8-bit edges.
+        width = Math.max(200, Math.ceil(window.innerWidth / 3));
+        height = Math.max(130, Math.ceil(window.innerHeight / 3));
+        canvas.width = width;
+        canvas.height = height;
+        draw(0);
+      };
+      function draw(t) {
+        const time = reducedMotion.matches ? 0 : t * 0.00022;
+        ctx.fillStyle = '#f6f6f4';
+        ctx.fillRect(0, 0, width, height);
+        // A soft white-to-grey vertical wash keeps text legible above the waves.
+        const wash = ctx.createLinearGradient(0, height * .2, 0, height);
+        wash.addColorStop(0, 'rgba(255,255,255,0)');
+        wash.addColorStop(1, 'rgba(170,170,170,.14)');
+        ctx.fillStyle = wash;
+        ctx.fillRect(0, 0, width, height);
+        const layers = 15;
+        for (let layer = 0; layer < layers; layer++) {
+          const ratio = layer / (layers - 1);
+          const baseline = height * (0.42 + ratio * .76);
+          const amplitude = (9 + ratio * 16) * Math.min(1.35, height / 215);
+          const shift = time * (0.38 + ratio * .16);
+          const gray = Math.round(234 - ratio * 79);
+          ctx.fillStyle = `rgb(${gray},${gray},${gray})`;
+          ctx.beginPath();
+          ctx.moveTo(0, height);
+          for (let x = 0; x <= width + 3; x += 3) {
+            const nx = x / Math.max(1,width);
+            const y = baseline
+              + Math.sin(nx * Math.PI * (2.1 + ratio * 1.6) + shift + layer * .52) * amplitude
+              + Math.sin(nx * Math.PI * 5.5 - shift * 1.3 + layer * .83) * amplitude * .26;
+            ctx.lineTo(x, y);
+          }
+          ctx.lineTo(width, height);
+          ctx.closePath();
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(255,255,255,.48)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+        // Light pixel dithering in the bottom third.
+        ctx.fillStyle = 'rgba(255,255,255,.1)';
+        for (let y = Math.floor(height * .68); y < height; y += 5) {
+          for (let x = (y % 2) * 2; x < width; x += 7) {
+            if ((x + y * 3) % 5 < 2) ctx.fillRect(x, y, 1, 1);
+          }
+        }
+      }
+      function animate(t) { draw(t); frameId = requestAnimationFrame(animate); }
+      function updateMotion() {
+        if (frameId !== null) cancelAnimationFrame(frameId);
+        frameId = null;
+        draw(0);
+        if (!reducedMotion.matches) frameId = requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', resize, { passive: true });
+      reducedMotion.addEventListener?.('change', updateMotion);
+      resize();
+      updateMotion();
+    })();
+  </script>
+</body>
+</html>
